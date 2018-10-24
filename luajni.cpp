@@ -170,7 +170,8 @@ int lua_NewObject(lua_State * L)
 		return caller.PushReturn();
 	}
 
-	return 0;
+    lua_pushnil(L);
+    return 1;
 }
 
 
@@ -207,7 +208,8 @@ int lua_CallMethod(lua_State * L)
 		return caller.PushReturn();
 	}
 
-	return 0;
+    lua_pushnil(L);
+    return 1;
 }
 
 int lua_CallStaticMethod(lua_State * L)
@@ -248,7 +250,8 @@ int lua_CallStaticMethod(lua_State * L)
 		return caller.PushReturn();
 	}
 
-	return 0;
+    lua_pushnil(L);
+    return 1;
 }
 
 int lua_GetField(lua_State * L)
@@ -284,7 +287,8 @@ int lua_GetField(lua_State * L)
 		return caller.PushReturn();
 	}
 
-	return 0;
+    lua_pushnil(L);
+    return 1;
 }
 
 int lua_SetField(lua_State * L)
@@ -318,8 +322,10 @@ int lua_SetField(lua_State * L)
 	JavaCaller caller(env, L);
 	if (caller.SetField(javaObject, fieldName, descriptor,4)) {
 		lua_pushboolean(L, true);
-	}
-	lua_pushboolean(L, false);
+	} else{
+        lua_pushboolean(L, false);
+    }
+
 	return 1;
 }
 
@@ -361,7 +367,8 @@ int lua_GetStaticField(lua_State * L)
 		return caller.PushReturn();
 	}
 
-	return 0;
+    lua_pushnil(L);
+    return 1;
 }
 
 int lua_SetStaticField(lua_State * L)
@@ -400,8 +407,9 @@ int lua_SetStaticField(lua_State * L)
 	JavaCaller caller(env, L);
 	if (caller.SetStaticField(javaClz, fieldName, descriptor, 4)) {
 		lua_pushboolean(L, true);
-	}
-	lua_pushboolean(L, false);
+	}else{
+        lua_pushboolean(L, false);
+    }
 	return 1;
 }
 
