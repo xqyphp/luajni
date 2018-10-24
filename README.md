@@ -5,9 +5,7 @@
  1. `void luajni_open(lua_State *L, JNIEnv *env);`
     注册扩展，会注册全局变量luajni，lua中可以直接调用里面的方法
                 
- 2. `void luajni_open(lua_State *L, JNIEnv *env);`
-    注册扩展，会注册全局变量luajni，lua中可以直接调用里面的方法
- 3. `void luajni_push_object(lua_State *L, const char* key, jobject obj);`
+ 2. `void luajni_push_object(lua_State *L, const char* key, jobject obj);`
     存储JAVA对象到lua中，不会自动转换成全局引用，因此obj需要生成全局引用再调用,key为查询的索引，供lua层查找
 ### 三、数据类型说明：
 1. java中string 对应 lua中string,会自动进行转换。
