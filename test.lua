@@ -16,6 +16,7 @@ function print_service()
         local info = luajni.callMethod(services, "get", "(I)Ljava/lang/Object;", i)
         local strproc = luajni.getField(info, "process",
             "Ljava/lang/String;")
+	print(strproc)
         luajni.deleteLocalRef(info)
     end
     luajni.deleteLocalRef(activity)
